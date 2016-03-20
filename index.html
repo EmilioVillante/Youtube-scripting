@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+    <div id="player"></div>
+
+    <script>
+
+    //ID is between v= and &
+    //eg: ------- http://www.youtube.com/watch?v=pfqNykQgaOs&feature=channel_video_title ------- so video ID is: pfqNykQgaOs
+      var videoList = [
+        //The War Of The Worlds 1953
+        {
+          'videoId':'8ljQUTeCF2U',
+          'startSeconds':900,
+          'endSeconds':1779,
+          'suggestedQuality':'hd1080'
+        },       
+        //rocky 1 final fight
+        {
+          'videoId':'HRrIZCKg_2M',
+          'startSeconds':0,
+          'endSeconds':505,
+          'suggestedQuality':'hd1080'
+        },      
+        //Top Gun - Final Dogfight
+        {
+          'videoId':'jqfXXaOisKo',
+          'startSeconds':0,
+          'endSeconds':565,
+          'suggestedQuality':'hd1080'
+        },
+        //japanese guy vs bear -> sausages
+        {
+          'videoId':'54S2EBoh1Gk',
+          'startSeconds':4,
+          'endSeconds':205,
+          'suggestedQuality':'hd1080'
+        },
+        //The vampire lovers
+        {
+          'videoId':'iZlEZO88pHM',
+          'startSeconds':465,
+          'endSeconds':765,
+          'suggestedQuality':'hd1080'
+        },
+        //frankensteins castle of freaks
+        {
+          'videoId':'ECAPZbGsqM8',
+          'startSeconds':780,
+          'endSeconds':1140,
+          'suggestedQuality':'hd1080'
+        },
+        //elsa fraulein
+        {
+          'videoId':'iTAgIlXdut8',
+          'startSeconds':0,
+          'endSeconds':251,
+          'suggestedQuality':'hd1080'
+        },
+        //Niccolo Paganini
+        {
+          'videoId':'ZaxouRYwm6k',
+          'startSeconds':922,
+          'endSeconds':1106,
+          'suggestedQuality':'hd1080'
+        },
+        //Damnation Alley
+        {
+          'videoId':'ZaxouRYwm6k',
+          'startSeconds':2220,
+          'endSeconds':3060,
+          'suggestedQuality':'hd1080'
+        },    
+        //Bingo Long
+        {
+          'videoId':'bCJ_INhdW9M',
+          'startSeconds':2006,
+          'endSeconds':2400,
+          'suggestedQuality':'hd1080'
+        },   
+        //How to iron a shirt
+        {
+          'videoId':'gL-76726iHY',
+          'startSeconds':06,
+          'endSeconds':606,
+          'suggestedQuality':'hd1080'
+        },     
+        //Tetsuo: the iron man
+        {
+          'videoId':'OjXzMGp6teU',
+          'startSeconds':2198,
+          'endSeconds':2646,
+          'suggestedQuality':'hd1080'
+        },
+        //First Spaceship On Venus
+        {
+          'videoId':'PjvRHMXFHxA',
+          'startSeconds':17,
+          'endSeconds':606,
+          'suggestedQuality':'hd1080'
+        },      
+        //War Between The Planets
+        {
+          'videoId':'DSVrj8eIzjw',
+          'startSeconds':969,
+          'endSeconds':1284,
+          'suggestedQuality':'hd1080'
+        },                                         
+        //The Apple
+        {
+          'videoId':'PlBnxVIAQ20',
+          'startSeconds':0,
+          'endSeconds':180,
+          'suggestedQuality':'hd1080'
+        },   
+        //Speed
+        {
+          'videoId':'ktqxcRm736w',
+          'startSeconds':0,
+          'endSeconds':170,
+          'suggestedQuality':'hd1080'
+        },    
+        //Berlin - Sex
+        {
+          'videoId':'3vYEFiQyNo8',
+          'startSeconds':27,
+          'endSeconds':215,
+          'suggestedQuality':'hd1080'
+        },    
+        //Alien Contamination
+        {
+          'videoId':'HCl24MgxrQw',
+          'startSeconds':8,
+          'endSeconds':98,
+          'suggestedQuality':'hd1080'
+        },    
+        //Amazing Aliens Rap
+        {
+          'videoId':'xcLTaMpRl2o',
+          'startSeconds':10,
+          'endSeconds':480,
+          'suggestedQuality':'hd1080'
+        },                                                                          
+        //Time Machine
+        {
+          'videoId':'vtr5q6dn7CA',
+          'startSeconds':5,
+          'endSeconds':141,
+          'suggestedQuality':'hd1080'
+        },                
+        //Time Machine
+        {
+          'videoId':'a4NCnH7RPZY',
+          'startSeconds':0,
+          'endSeconds':160,
+          'suggestedQuality':'hd1080'
+        },                
+        //Scrumdiddlyumptious 
+        {
+          'videoId':'a4NCnH7RPZY',
+          'startSeconds':0,
+          'endSeconds':210,
+          'suggestedQuality':'hd1080'
+        },    
+        //The Tunnel Scene from Willy Wonka & the Chocolate Factory 
+        {
+          'videoId':'8X48RiKQmFQ',
+          'startSeconds':20,
+          'endSeconds':207,
+          'suggestedQuality':'hd1080'
+        },    
+        //Bullitt Chase Scene 
+        {
+          'videoId':'0vNvc9n1ikI',
+          'startSeconds':0,
+          'endSeconds':420,
+          'suggestedQuality':'hd1080'
+        },    
+        //Mad Max - I Am The Night Rider 
+        {
+          'videoId':'Gb1uDc_qa-4',
+          'startSeconds':0,
+          'endSeconds':165,
+          'suggestedQuality':'hd1080'
+        },    
+        //The Wraith Movie Chase 
+        {
+          'videoId':'UCB0a1BRFkA',
+          'startSeconds':31,
+          'endSeconds':297,
+          'suggestedQuality':'hd1080'
+        },  
+        //SBS: GOD IS NOT A FAN OF YOUR 70's SCI-FI MARRIAGE 
+        {
+          'videoId':'NYtfgIPCfu0',
+          'startSeconds':2,
+          'endSeconds':25,
+          'suggestedQuality':'hd1080'
+        },                     
+        //SBS: VELVET - DEATH DANCERS 
+        {
+          'videoId':'C9Vr5oZFX-w',
+          'startSeconds':4,
+          'endSeconds':64,
+          'suggestedQuality':'hd1080'
+        },   
+        //SBS: SEXY BLACK OPS 
+        {
+          'videoId':'TFpIXVJE0j4',
+          'startSeconds':0,
+          'endSeconds':160,
+          'suggestedQuality':'hd1080'
+        }, 
+        //SBS: TURTLEY BODACIOUS XMAS DUDE 
+        {
+          'videoId':'HrmQqI0I7vQ',
+          'startSeconds':8,
+          'endSeconds':390,
+          'suggestedQuality':'hd1080'
+        },       
+        //sidewalk scene dirty harry 
+        {
+          'videoId':'KqgGihIfq5U',
+          'startSeconds':0,
+          'endSeconds':265,
+          'suggestedQuality':'hd1080'
+        },                       
+        //Sudden Impact - "Go Ahead Make My Day 
+        {
+          'videoId':'3ishbTwXf1g',
+          'startSeconds':0,
+          'endSeconds':230,
+          'suggestedQuality':'hd1080'
+        },
+        //Magnum Force- Airplane Hijacking Scene 
+        {
+          'videoId':'VgaahBvqj-8',
+          'startSeconds':42,
+          'endSeconds':300,
+          'suggestedQuality':'hd1080'
+        },                                      
+        //Greatest Fight Scene Ever 
+        {
+          'videoId':'hRY9dAqDLOQ',
+          'startSeconds':0,
+          'endSeconds':129,
+          'suggestedQuality':'hd1080'
+        },   
+        //Get three coffins ready - A Fistful of Dollars 
+        {
+          'videoId':'KZ_7br_3y54',
+          'startSeconds':0,
+          'endSeconds':234,
+          'suggestedQuality':'hd1080'
+        },                                      
+        //Uncle Monty - the end of an age 
+        {
+          'videoId':'pDl4ye22U-E',
+          'startSeconds':0,
+          'endSeconds':180,
+          'suggestedQuality':'hd1080'
+        },     
+        //Monty Python - Blackmail 
+        {
+          'videoId':'wZgwNutwK0Y',
+          'startSeconds':0,
+          'endSeconds':140,
+          'suggestedQuality':'hd1080'
+        },           
+        //Monty Python - self defense against fresh fruit 
+        {
+          'videoId':'KnUOdgrZj7g',
+          'startSeconds':0,
+          'endSeconds':389,
+          'suggestedQuality':'hd1080'
+        },       
+        //Village Idiots (Monty Python Sketch) 
+        {
+          'videoId':'bhDJxEPRDek',
+          'startSeconds':0,
+          'endSeconds':220,
+          'suggestedQuality':'hd1080'
+        },         
+        //Venus Wars 1989 2 
+        {
+          'videoId':'Lq7Jn1g1zvw',
+          'startSeconds':0,
+          'endSeconds':140,
+          'suggestedQuality':'hd1080'
+        },                                      
+        //Muppets from Space (1999) - Andie MacDowell scene 
+        {
+          'videoId':'h9Qov3939-Y',
+          'startSeconds':0,
+          'endSeconds':55,
+          'suggestedQuality':'hd1080'
+        },    
+        //Muppets from Space (1999) - Andie MacDowell scene 
+        {
+          'videoId':'ZUhIxO5nvdk',
+          'startSeconds':0,
+          'endSeconds':100,
+          'suggestedQuality':'hd1080'
+        },     
+        //Space:1999 War Games 
+        {
+          'videoId':'CnT2rnvtxpM',
+          'startSeconds':10,
+          'endSeconds':560,
+          'suggestedQuality':'hd1080'
+        },               
+        //Jin-Roh The Wolf Brigade Training Simulation 
+        {
+          'videoId':'4d2gBnUjI1E',
+          'startSeconds':10,
+          'endSeconds':187,
+          'suggestedQuality':'hd1080'
+        }, 
+        //Most manliest Anime scene Ever - Fist of the Northstar 
+        {
+          'videoId':'dTDy8XVdRSk',
+          'startSeconds':10,
+          'endSeconds':100,
+          'suggestedQuality':'hd1080'
+        },        
+        //Roujin Z 
+        {
+          'videoId':'6PBaOgoJ2cE',
+          'startSeconds':1025,
+          'endSeconds':1564,
+          'suggestedQuality':'hd1080'
+        },        
+        //Lensman The Secret of the Lens English Dubbed 
+        {
+          'videoId':'_g5xFo8YowQ',
+          'startSeconds':5692,
+          'endSeconds':5989,
+          'suggestedQuality':'hd1080'
+        },        
+        //The Running Man (Hashiru Otoko, 1987)  
+        {
+          'videoId':'CXLUuNurpsc',
+          'startSeconds':20,
+          'endSeconds':660,
+          'suggestedQuality':'hd1080'
+        },    
+        //Space 1999 breakaway scene  
+        {
+          'videoId':'mmm8L-BdAPI',
+          'startSeconds':0,
+          'endSeconds':549,
+          'suggestedQuality':'hd1080'
+        },  
+        //Guyver: Bio-Booster Armor  
+        {
+          'videoId':'06fHYBuJjhg',
+          'startSeconds':1117,
+          'endSeconds':1335,
+          'suggestedQuality':'hd1080'
+        },            
+        // a Banana - Red Dwarf  
+        {
+          'videoId':'oB-NnVpvQ78',
+          'startSeconds':0,
+          'endSeconds':180,
+          'suggestedQuality':'hd1080'
+        },            
+        //April Fool - Red Dwarf  
+        {
+          'videoId':'NEu0o62ycmg',
+          'startSeconds':0,
+          'endSeconds':165,
+          'suggestedQuality':'hd1080'
+        },       
+        //blakes  
+        {
+          'videoId':'w2j3e9Xc3QM',
+          'startSeconds':360,
+          'endSeconds':1651,
+          'suggestedQuality':'hd1080'
+        },    
+        //F1 1970 | Mexico  
+        {
+          'videoId':'oYwZw4ImUtE',
+          'startSeconds':4,
+          'endSeconds':215,
+          'suggestedQuality':'hd1080'
+        },    
+        //Eazy E - Real muthafuckin G's  
+        {
+          'videoId':'fJuapp9SORA',
+          'startSeconds':0,
+          'endSeconds':285,
+          'suggestedQuality':'hd1080'
+        },                          
+        //black books  
+        {
+          'videoId':'MO9bNmkJVbw',
+          'startSeconds':20,
+          'endSeconds':80,
+          'suggestedQuality':'hd1080'
+        },
+        //he man  
+        {
+          'videoId':'NUXWFQ0UxAo',
+          'startSeconds':80,
+          'endSeconds':568,
+          'suggestedQuality':'hd1080'
+        },
+      ];
+
+
+      //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+      //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+      //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+      //===========================================================================================================
+      //  Initial Parameters for the youtube player
+      //===========================================================================================================
+      var initialParameters = {
+        height: '390',
+        width: '640',
+        playerVars: { 
+          'autoplay': 1, 
+          'controls': 0,
+          'mute': 1,
+          'showinfo': 0
+        },
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      }
+
+
+      //===========================================================================================================
+      //  Play Random Video and remove from list
+      //===========================================================================================================
+      function hotswapVideos(){
+        var randPos = Math.floor(Math.random() * videoList.length);
+
+        player.loadVideoById(videoList[randPos]);
+        //delay or load gets fkd
+        setTimeout(function(){
+          videoList.splice(randPos,1);
+        }, 0)
+
+        // setTimeout(function(){
+        //   console.log('test', videoList[randPos])
+        //   hotswapVideos();
+        // }, 3000);
+      }
+
+
+
+      //===========================================================================================================
+      //  Player Events
+      //===========================================================================================================
+      //When the player is ready start the circle jerk
+      function onPlayerReady(event) {
+        player.mute();
+        hotswapVideos();
+      }
+
+      //start next video if the state has 'ended' and there is a video left in the videolist array
+      function onPlayerStateChange(event) {
+        if(event.data == 0 && videoList.length > 0){
+          hotswapVideos();
+        }
+      }
+
+
+      //===========================================================================================================
+      //  Init Player
+      //===========================================================================================================
+      var tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', initialParameters);
+      }
+
+      //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+      //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+      //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+    </script>
+  </body>
+</html>
